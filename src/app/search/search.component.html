@@ -1,28 +1,47 @@
 <div class="search_block">
   <div class="search_input">
     <h1>Start Movie Title</h1>
+    <form class="example-form">
     <mat-form-field>
+
       <input
         matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
         placeholder="Start movie title"
         [(ngModel)]="SearchStr"
-        [minlength]="minLength"
         (ngModelChange)="handleChange()"
+        (focus)="isPicked = false"
       >
 
-      <mat-error>
-        Min Length is {{ minLength }}. Now it's {{ SearchStr.length }}
-      </mat-error>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let movie of movies.Search; let i = index" [value]="movie" (click)="PickMovie(i)">
+          {{ movie.Title }}
+        </mat-option>
+      </mat-autocomplete>
+
 
     </mat-form-field>
+    </form>
 
-    <ul *ngFor="let movie of movies.Search">
-      <li>
-        {{ movie.Title }}
-      </li>
-    </ul>
+    <div *ngIf="isPicked">
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>{{ SelectedMovie.Title }}</mat-card-title>
+          <mat-card-subtitle>{{ SelectedMovie.Year }}</mat-card-subtitle>
+        </mat-card-header>
+        <img class="image center" mat-card-image src="{{SelectedMovie.Poster}}" alt="{{ SelectedMovie.Title }}">
+        <mat-card-actions>
+          <a class="buttons" mat-raised-button routerLink="." target="_blank" href="https://www.imdb.com/title/{{SelectedMovie.imdbID}}/">IMDB</a>
+          <button mat-raised-button color="primary">Info</button>
+          <button mat-raised-button color="accent">Favorite</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
 
   </div>
 </div>
+
+
 
 

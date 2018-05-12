@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MoviesService} from "../movies.service";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-search',
@@ -8,21 +9,30 @@ import {MoviesService} from "../movies.service";
 })
 export class SearchComponent {
 
+  myControl: FormControl = new FormControl();
+
+  isPicked: boolean = false;
   SearchStr: string = '';
-  minLength: number = 3;
-  isLoaded: boolean = false;
-  movies: string[];
+  movies: any[];
+  SelectedMovie: any;
 
   constructor(private service: MoviesService) { }
 
   handleChange() {
-    if(this.minLength <= this.SearchStr.length) {
+    if(!this.isPicked) {
       this.service.getMovie(this.SearchStr)
         .subscribe( movies => {
           this.movies = movies;
-            this.isLoaded = true;
         })
     }
+  }
+
+  PickMovie(index) {
+    this.SearchStr = this.movies.Search[index].Title;
+    this.isPicked = true;
+    this.SelectedMovie = this.movies.Search[index];
+    console.log(this.SelectedMovie);
+
   }
 
 }

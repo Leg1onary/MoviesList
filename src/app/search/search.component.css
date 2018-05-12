@@ -17,14 +17,18 @@ mat-form-field {
 }
 
 .card {
-  width: 500px;
-  margin: 20px auto;
+  width: 250px;
+  margin: 10px auto;
 }
 
 .image {
-  width:200px;
+  width:auto;
 }
 
 .content {
   float:right;
+}
+
+.buttons {
+  margin: 10px auto;
 }
