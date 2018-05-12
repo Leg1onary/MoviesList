@@ -1,0 +1,28 @@
+<div class="search_block">
+  <div class="search_input">
+    <h1>Start Movie Title</h1>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Start movie title"
+        [(ngModel)]="SearchStr"
+        [minlength]="minLength"
+        (ngModelChange)="handleChange()"
+      >
+
+      <mat-error>
+        Min Length is {{ minLength }}. Now it's {{ SearchStr.length }}
+      </mat-error>
+
+    </mat-form-field>
+
+    <ul *ngFor="let movie of movies.Search">
+      <li>
+        {{ movie.Title }}
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+
