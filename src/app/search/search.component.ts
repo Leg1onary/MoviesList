@@ -13,8 +13,9 @@ export class SearchComponent {
 
   isPicked: boolean = false;
   SearchStr: string = '';
-  movies: any[];
+  movies: any;
   SelectedMovie: any;
+  MoviesList: any[] = [];
 
   constructor(private service: MoviesService) { }
 
@@ -31,8 +32,13 @@ export class SearchComponent {
     this.SearchStr = this.movies.Search[index].Title;
     this.isPicked = true;
     this.SelectedMovie = this.movies.Search[index];
-    console.log(this.SelectedMovie);
+  }
 
+  PushInFavorite() {
+    this.MoviesList.push(this.SelectedMovie);
+  }
+  DeleteFromFavorite() {
+    
   }
 
 }
