@@ -32,9 +32,8 @@
         </mat-card-header>
         <img class="image center" mat-card-image src="{{SelectedMovie.Poster}}" alt="{{ SelectedMovie.Title }}">
         <mat-card-actions>
-          <a class="buttons" mat-raised-button routerLink="." target="_blank" href="https://www.imdb.com/title/{{SelectedMovie.imdbID}}/">IMDB</a>
-          <button mat-raised-button color="primary">Info</button>
-          <button mat-raised-button color="accent" (click)="PushInFavorite()">Favorite</button>
+          <a class="buttons" mat-raised-button routerLink="." target="_blank" href="https://www.imdb.com/title/{{SelectedMovie.imdbID}}/">open IMDB</a>
+          <button mat-raised-button color="accent" (click)="PushInFavorite(SelectedMovie.Title)">Add Favorite</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -42,11 +41,18 @@
   </div>
 </div>
 
-<table style="float:right">
+<div class="movieList">
+  <h2 class="center">My Movies List</h2>
+  <div *ngIf="MoviesList.length < 1" class="center">List is <b style="color:red">Empty</b></div>
+<table *ngIf="MoviesList.length >= 1">
   <tr *ngFor="let mymovies of MoviesList">
-    <td> {{mymovies.Title }}</td> <td> <button mat-raised-button color="primary">Info</button> </td> <td> <button mat-raised-button color="warn">Delete</button> </td>
+    <td> {{mymovies.Title }}</td>
+    <td> <button mat-raised-button color="primary" (click)="GiveMovieInfo(mymovies.Title)">Info</button> </td>
+    <td> <a class="buttons" mat-raised-button routerLink="." target="_blank" href="https://www.imdb.com/title/{{mymovies.imdbID}}/">on IMDB</a></td>
+    <td> <button mat-raised-button color="warn" (click)="DeleteFromFavorite(mymovies.Title)">Delete</button> </td>
   </tr>
 </table>
+</div>
 
 
 

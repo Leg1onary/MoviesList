@@ -12,17 +12,19 @@ export class SearchComponent {
   myControl: FormControl = new FormControl();
 
   isPicked: boolean = false;
+  isAdded: boolean = false;
   SearchStr: string = '';
   movies: any;
   SelectedMovie: any;
   MoviesList: any[] = [];
 
-  constructor(private service: MoviesService) { }
+  constructor(private service: MoviesService) {
+  }
 
   handleChange() {
-    if(!this.isPicked) {
+    if (!this.isPicked) {
       this.service.getMovie(this.SearchStr)
-        .subscribe( movies => {
+        .subscribe(movies => {
           this.movies = movies;
         })
     }
@@ -34,11 +36,32 @@ export class SearchComponent {
     this.SelectedMovie = this.movies.Search[index];
   }
 
-  PushInFavorite() {
-    this.MoviesList.push(this.SelectedMovie);
-  }
-  DeleteFromFavorite() {
-    
+  PushInFavorite(movie: string) {
+    for (var i = 0; i < this.MoviesList.length; i++) {
+      if (this.MoviesList[i].Title == movie) {
+        this.isAdded = true;
+      }
+    }
+    if (!this.isAdded) {
+      this.MoviesList.push(this.SelectedMovie);
+    }
+    this.isAdded = false;
   }
 
+  DeleteFromFavorite(movie: string) {
+    for (var i = 0; i < this.MoviesList.length; i++) {
+      if (this.MoviesList[i].Title == movie) {
+        this.MoviesList.splice(i, 1);
+      }
+    }
+  }
+
+  GiveMovieInfo(movie: string) {
+
+    for (var i = 0; i < this.MoviesList.length; i++) {
+      if (this.MoviesList[i].Title == movie) {
+        this.service.MovieInfo(this.MoviesList[i].imdbID)
+      }
+    }
+  }
 }

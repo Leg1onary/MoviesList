@@ -32,3 +32,14 @@ mat-form-field {
 .buttons {
   margin: 10px auto;
 }
+
+.movieList {
+  float:right;
+  width:35%;
+}
+
+.movieList td {
+  border: 1px solid black;
+  padding:10px;
+  text-align: center;
+}
