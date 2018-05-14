@@ -15,7 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SearchComponent } from './search/search.component';
-import {MoviesService} from "./movies.service";
+import {MoviesService} from "./services/movies.service";
 
 
 
