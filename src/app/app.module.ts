@@ -13,17 +13,25 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatIconModule} from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SearchComponent } from './search/search.component';
+import { MovieDetailComponent} from "./movie-detail/movie-detail.component";
+
 import {MoviesService} from "./services/movies.service";
+
+import {RouterModule} from "@angular/router";
+
+const routes = [
+  {path: '', component: SearchComponent},
+  {path: 'movie-detail', component: MovieDetailComponent}
+]
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent,
-    SearchComponent
+    SearchComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +45,8 @@ import {MoviesService} from "./services/movies.service";
     ReactiveFormsModule,
     MatSelectModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [MoviesService],
   bootstrap: [AppComponent]

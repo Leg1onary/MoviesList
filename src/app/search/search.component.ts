@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {MoviesService} from "../services/movies.service";
 import {FormControl} from "@angular/forms";
 
@@ -15,14 +15,17 @@ export class SearchComponent implements OnInit {
   isAdded: boolean = false;
   isPicked: boolean = false;
   SearchStr: string = '';
-  movies: any;
+  movies: any = [];
   SelectedMovie: any;
   MovieList: any[] = [];
+  MovieInfo: any = {};
 
   constructor(private service: MoviesService) {
+
   }
 
   ngOnInit() {
+
     for (let i = 0; i < localStorage.length; i++) {
       let key = localStorage.key(i);
       let myMovie = JSON.parse(localStorage.getItem(key));
@@ -72,6 +75,13 @@ export class SearchComponent implements OnInit {
   DeleteAllFavorite() {
     localStorage.clear();
     this.MovieList.splice(0,this.MovieList.length);
+  }
+
+  GetMovieInfo(imdbID) {
+    this.service.MovieInfo(imdbID).subscribe(MovieInfo => {
+      this.MovieInfo = MovieInfo;
+    });
+    console.log(this.MovieInfo);
   }
 
 }

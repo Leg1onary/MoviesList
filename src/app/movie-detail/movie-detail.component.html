@@ -1,0 +1,27 @@
+<a routerLink=""><button style="margin: 5px 45%;" mat-raised-button color="warn">Вернуться к поиску</button></a>
+<div>
+  <mat-card >
+    <mat-card-header>
+      <mat-card-title>{{ MovieInfo.Title }}</mat-card-title>
+      <mat-card-subtitle>{{ MovieInfo.Year }}</mat-card-subtitle>
+    </mat-card-header>
+    <img  mat-card-image src="{{MovieInfo.Poster}}" alt="{{ MovieInfo.Title }}">
+    <mat-card-actions>
+      <ul>
+        <li><b>Rated: </b> {{MovieInfo.Rated}}</li>
+        <li><b>Released:</b> {{MovieInfo.Released}}</li>
+        <li><b>Runtime:</b> {{MovieInfo.Runtime}}</li>
+        <li><b>Genre: </b>{{MovieInfo.Genre}}</li>
+        <li><b>Director: </b>{{MovieInfo.Director}}</li>
+        <li><b>Writer: </b>{{MovieInfo.Writer}}</li>
+        <li><b>Actors:</b> {{MovieInfo.Actors}}</li>
+        <li><b>Plot:</b> {{MovieInfo.Plot}}</li>
+        <li><b>Language:</b> {{MovieInfo.Language}}</li>
+        <li><b>Country:</b> {{MovieInfo.Country}}</li>
+        <li><b>Awards:</b> {{MovieInfo.Awards}}</li>
+        <li><b>Production: </b>{{MovieInfo.Production}}</li>
+        <li><b>Website:</b> {{MovieInfo.Website}}</li>
+      </ul>
+    </mat-card-actions>
+  </mat-card>
+</div>
