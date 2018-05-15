@@ -49,7 +49,13 @@
   <tr *ngFor="let mymovies of MovieList; let i = index">
     <td> {{i+1}}</td>
     <td> {{mymovies.Title }}</td>
-    <td> <a routerLink="movie-detail"><button mat-raised-button color="primary" (click)="GetMovieInfo(mymovies.imdbID)">Info</button></a> </td>
+    <td>
+      <a class="buttons" mat-raised-button routerLink="movie-detail">
+        <button mat-raised-button color="primary" (click)="getMovieInfo(mymovies.imdbID)">Info
+        </button>
+      </a>
+    </td>
+
     <td> <a class="buttons" mat-raised-button routerLink="." target="_blank" href="https://www.imdb.com/title/{{mymovies.imdbID}}/">on IMDB</a></td>
     <td> <button mat-raised-button color="warn" (click)="DeleteMovieFromStorage(mymovies.imdbID,i)">Delete</button> </td>
   </tr>

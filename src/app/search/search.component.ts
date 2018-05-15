@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {MoviesService} from "../services/movies.service";
 import {FormControl} from "@angular/forms";
 
@@ -9,6 +9,7 @@ import {FormControl} from "@angular/forms";
 })
 export class SearchComponent implements OnInit {
 
+  @Output('movieID') GetMovieInform = new EventEmitter<any>();
 
   myControl: FormControl = new FormControl();
 
@@ -18,7 +19,7 @@ export class SearchComponent implements OnInit {
   movies: any = [];
   SelectedMovie: any;
   MovieList: any[] = [];
-  MovieInfo: any = {};
+  MovieInfo: string;
 
   constructor(private service: MoviesService) {
 
@@ -77,11 +78,9 @@ export class SearchComponent implements OnInit {
     this.MovieList.splice(0,this.MovieList.length);
   }
 
-  GetMovieInfo(imdbID) {
-    this.service.MovieInfo(imdbID).subscribe(MovieInfo => {
-      this.MovieInfo = MovieInfo;
-    });
-    console.log(this.MovieInfo);
+  getMovieInfo(imdbID) {
+    let key = sessionStorage.length+1;
+    sessionStorage.setItem(key.toString(), imdbID);
   }
 
 }
