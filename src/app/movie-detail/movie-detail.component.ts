@@ -8,15 +8,32 @@ import {MoviesService} from "../services/movies.service";
 })
 export class MovieDetailComponent implements OnInit {
 
-  movieData: any[];
+  movieData: {
+    Title:'',
+    Year:'',
+    Poster:'',
+    Rated: '',
+    Released: '',
+    Runtime: '',
+    Genre: '',
+    Director: '',
+    Writer: '',
+    Actors: '',
+    Plot: '',
+    Language: '',
+    Country: '',
+    Awards: '',
+    Production: '',
+    Website: ''
+  };
 
   constructor(private service: MoviesService) {
+    this.service.MovieInfo(sessionStorage.getItem('1'))
+      .subscribe(movieData => {this.movieData = movieData});
 
   }
 
   ngOnInit() {
-    this.service.MovieInfo(sessionStorage.getItem('1'))
-      .subscribe(movieData => {this.movieData = movieData});
-    console.log(this.movieData);
+
   }
 }

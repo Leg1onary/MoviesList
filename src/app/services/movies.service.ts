@@ -14,4 +14,5 @@ export class MoviesService {
   MovieInfo(imdbID: string): Observable<any> {
     return this.http.get(`http://www.omdbapi.com/?i=${imdbID}&apikey=dc41b897`)
   }
+
 }

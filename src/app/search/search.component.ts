@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MoviesService} from "../services/movies.service";
 import {FormControl} from "@angular/forms";
 
@@ -9,8 +9,6 @@ import {FormControl} from "@angular/forms";
 })
 export class SearchComponent implements OnInit {
 
-  @Output('movieID') GetMovieInform = new EventEmitter<any>();
-
   myControl: FormControl = new FormControl();
 
   isAdded: boolean = false;
@@ -19,7 +17,6 @@ export class SearchComponent implements OnInit {
   movies: any = [];
   SelectedMovie: any;
   MovieList: any[] = [];
-  MovieInfo: string;
 
   constructor(private service: MoviesService) {
 
@@ -37,9 +34,7 @@ export class SearchComponent implements OnInit {
   handleChange() {
     if (!this.isPicked) {
       this.service.getMovie(this.SearchStr)
-        .subscribe(movies => {
-          this.movies = movies;
-        })
+        .subscribe(movies => this.movies = movies)
     }
   }
 
@@ -79,8 +74,8 @@ export class SearchComponent implements OnInit {
   }
 
   getMovieInfo(imdbID) {
-    let key = sessionStorage.length+1;
-    sessionStorage.setItem(key.toString(), imdbID);
+    sessionStorage.clear();
+    sessionStorage.setItem('1', imdbID);
   }
 
 }
