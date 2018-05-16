@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -19,10 +20,12 @@ import { MovieDetailComponent} from "./movie-detail/movie-detail.component";
 import {MoviesService} from "./services/movies.service";
 
 import {RouterModule} from "@angular/router";
+import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 
 const routes = [
   {path: '', component: SearchComponent},
-  {path: 'movie-detail', component: MovieDetailComponent}
+  {path: 'movie-detail', component: MovieDetailComponent},
+  {path: 'favorite-list', component: FavoriteListComponent}
 ]
 
 
@@ -31,7 +34,8 @@ const routes = [
   declarations: [
     AppComponent,
     SearchComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    FavoriteListComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,8 @@ const routes = [
     MatSelectModule,
     MatAutocompleteModule,
     MatIconModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatSnackBarModule
   ],
   providers: [MoviesService],
   bootstrap: [AppComponent]

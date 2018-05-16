@@ -1,7 +1,6 @@
 .search_block {
   margin: 0 auto;
-  width:1000px;
-  padding-top: 50px;
+  padding: 20px;
 }
 
 h1 {
@@ -17,29 +16,15 @@ mat-form-field {
 }
 
 .card {
-  width: 250px;
+  width: 350px;
   margin: 10px auto;
 }
 
 .image {
   width:auto;
-}
-
-.content {
-  float:right;
+  margin: 5px auto;
 }
 
 .buttons {
   margin: 10px auto;
-}
-
-.movieList {
-  float:right;
-  width:35%;
-}
-
-.movieList td {
-  border: 1px solid black;
-  padding:10px;
-  text-align: center;
 }

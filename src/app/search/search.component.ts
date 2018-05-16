@@ -16,7 +16,6 @@ export class SearchComponent implements OnInit {
   SearchStr: string = '';
   movies: any = [];
   SelectedMovie: any;
-  MovieList: any[] = [];
 
   constructor(private service: MoviesService) {
 
@@ -24,11 +23,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
 
-    for (let i = 0; i < localStorage.length; i++) {
-      let key = localStorage.key(i);
-      let myMovie = JSON.parse(localStorage.getItem(key));
-      this.MovieList.push(myMovie);
-    }
   }
 
   handleChange() {
@@ -56,21 +50,8 @@ export class SearchComponent implements OnInit {
     if (!this.isAdded ) {
       let key = this.SelectedMovie.imdbID;
       localStorage.setItem(key.toString(), JSON.stringify(this.SelectedMovie));
-      this.MovieList.push(this.SelectedMovie);
     }
     this.isAdded = false;
-  }
-
-  DeleteMovieFromStorage(imdbID:string,indx: number){
-    localStorage.removeItem(imdbID);
-    this.MovieList.splice(indx,1);
-    console.log(this.MovieList)
-  }
-
-
-  DeleteAllFavorite() {
-    localStorage.clear();
-    this.MovieList.splice(0,this.MovieList.length);
   }
 
   getMovieInfo(imdbID) {
