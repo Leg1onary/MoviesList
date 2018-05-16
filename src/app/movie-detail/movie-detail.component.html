@@ -2,25 +2,25 @@
 <div >
   <mat-card >
     <mat-card-header>
-      <mat-card-title>{{ movieData.Title }}</mat-card-title>
-      <mat-card-subtitle>{{ movieData.Year }}</mat-card-subtitle>
+      <mat-card-title>{{ movieData?.Title }}</mat-card-title>
+      <mat-card-subtitle>{{ movieData?.Year }}</mat-card-subtitle>
     </mat-card-header>
-    <img style="width: 20%;" mat-card-image src="{{ movieData.Poster}}" alt="{{ movieData.Title }}">
+    <img style="width: 20%;" mat-card-image src="{{ movieData?.Poster}}" alt="{{ movieData?.Title }}">
     <mat-card-actions style="float:right; width: 80%;">
       <ul>
-        <li><b>Rated: </b> {{movieData.Rated}}</li>
-        <li><b>Released:</b> {{movieData.Released}}</li>
-        <li><b>Runtime:</b> {{movieData.Runtime}}</li>
-        <li><b>Genre: </b>{{movieData.Genre}}</li>
-        <li><b>Director: </b>{{movieData.Director}}</li>
-        <li><b>Writer: </b>{{movieData.Writer}}</li>
-        <li><b>Actors:</b> {{movieData.Actors}}</li>
-        <li><b>Plot:</b> {{movieData.Plot}}</li>
-        <li><b>Language:</b> {{movieData.Language}}</li>
-        <li><b>Country:</b> {{movieData.Country}}</li>
-        <li><b>Awards:</b> {{movieData.Awards}}</li>
-        <li><b>Production: </b>{{movieData.Production}}</li>
-        <li><b>Website:</b> {{movieData.Website}}</li>
+        <li><b>Rated: </b> {{movieData?.Rated}}</li>
+        <li><b>Released:</b> {{movieData?.Released}}</li>
+        <li><b>Runtime:</b> {{movieData?.Runtime}}</li>
+        <li><b>Genre: </b>{{movieData?.Genre}}</li>
+        <li><b>Director: </b>{{movieData?.Director}}</li>
+        <li><b>Writer: </b>{{movieData?.Writer}}</li>
+        <li><b>Actors:</b> {{movieData?.Actors}}</li>
+        <li><b>Plot:</b> {{movieData?.Plot}}</li>
+        <li><b>Language:</b> {{movieData?.Language}}</li>
+        <li><b>Country:</b> {{movieData?.Country}}</li>
+        <li><b>Awards:</b> {{movieData?.Awards}}</li>
+        <li><b>Production: </b>{{movieData?.Production}}</li>
+        <li><b>Website:</b> {{movieData?.Website}}</li>
       </ul>
     </mat-card-actions>
     <div style="clear:both"></div>
